@@ -481,7 +481,7 @@ function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2
 function initials(n){return (n||'?').trim().slice(0,2)||'?'}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
-function silhouette(){return `<svg class="silhouette" viewBox="0 0 200 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="#D7DFD2"><circle cx="100" cy="50" r="32"/><rect x="88" y="78" width="24" height="28" rx="11"/><path d="M100 102 C130 102 150 112 158 136 C164 164 154 204 141 228 C137 242 139 254 142 266 L100 270 L58 266 C61 254 63 242 59 228 C46 204 36 164 42 136 C50 112 70 102 100 102 Z"/><path d="M140 152 C140 140 146 136 156 136 C166 136 172 144 171 158 L165 250 C164 264 159 272 151 272 C144 272 140 264 140 252 Z"/><path d="M60 152 C60 140 54 136 44 136 C34 136 28 144 29 158 L35 250 C36 264 41 272 49 272 C56 272 60 264 60 252 Z"/><path d="M99 258 L95 464 C95 475 91 482 84 482 C77 482 73 475 73 464 L70 274 C70 265 75 258 83 258 Z"/><path d="M101 258 L105 464 C105 475 109 482 116 482 C123 482 127 475 127 464 L130 274 C130 265 125 258 117 258 Z"/><ellipse cx="82" cy="484" rx="15" ry="10"/><ellipse cx="118" cy="484" rx="15" ry="10"/></g></svg>`}
+function silhouette(view){var F="#EFF3EC",L="#6F7C6B";var P="<path d=\"M150 22 C172 22 186 40 186 64 C186 86 178 104 164 114 C158 119 154 122 150 122 C146 122 142 119 136 114 C122 104 114 86 114 64 C114 40 128 22 150 22 Z\"/><path d=\"M138 108 L162 108 L166 138 L134 138 Z\"/><path d=\"M150 128 C182 128 200 148 200 182 C200 248 189 326 183 388 C181 404 177 416 169 420 L150 423 L131 420 C123 416 119 404 117 388 C111 326 100 248 100 182 C100 148 118 128 150 128 Z\"/><path d=\"M197 166 C215 170 223 189 223 214 C223 270 227 340 231 404 C233 430 233 448 227 456 C222 462 214 462 209 456 C203 448 201 430 201 404 C199 340 193 270 191 216 C189 192 187 172 197 166 Z\"/><path d=\"M103 166 C85 170 77 189 77 214 C77 270 73 340 69 404 C67 430 67 448 73 456 C78 462 86 462 91 456 C97 448 99 430 99 404 C101 340 107 270 109 216 C111 192 113 172 103 166 Z\"/><path d=\"M152 420 C168 420 182 423 186 431 C190 463 188 540 184 600 C182 632 180 656 176 668 C172 676 164 676 160 668 C156 656 156 632 155 600 C154 540 153 463 153 433 C153 427 152 422 152 420 Z\"/><path d=\"M148 420 C132 420 118 423 114 431 C110 463 112 540 116 600 C118 632 120 656 124 668 C128 676 136 676 140 668 C144 656 144 632 145 600 C146 540 147 463 147 433 C147 427 148 422 148 420 Z\"/><path d=\"M160 664 C157 676 161 688 175 688 C188 688 192 679 187 671 C182 665 169 662 160 664 Z\"/><path d=\"M140 664 C143 676 139 688 125 688 C112 688 108 679 113 671 C118 665 131 662 140 664 Z\"/>";return `<svg class="silhouette" viewBox="0 0 300 706" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="${L}" stroke="${L}" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round">${P}</g><g fill="${F}">${P}</g></svg>`;}
 
 /* ============ nav ============ */
 function show(id){
@@ -539,7 +539,7 @@ consentBox.onclick=()=>consentBox.classList.toggle('on');
 /* ============ body map ============ */
 function mountFigures(){
   ['figFront','figBack'].forEach(fid=>{
-    const box=document.getElementById(fid);box.innerHTML=silhouette();
+    const box=document.getElementById(fid);box.innerHTML=silhouette(fid==='figFront'?'front':'back');
     box.onclick=ev=>{if(ev.target.closest('.marker'))return;const r=box.getBoundingClientRect();
       markers.push({id:++mid,view:fid==='figFront'?'front':'back',x:((ev.clientX-r.left)/r.width)*100,y:((ev.clientY-r.top)/r.height)*100,label:''});renderMarkers();};
   });
@@ -701,7 +701,7 @@ function openDetail(id){
   const cond=v=>v==='예'||v==='유';
   let bm='';
   if((m.markers||[]).length){
-    const fig=view=>{const ms=m.markers.map((x,i)=>({...x,n:i+1})).filter(x=>x.view===view);const dots=ms.map(x=>`<div class="marker" style="left:${x.x}%;top:${x.y}%;cursor:default">${x.n}</div>`).join('');return `<div class="body-fig"><div class="cap">${view==='front'?'앞 · FRONT':'뒤 · BACK'}</div><div class="figbox" style="position:relative">${silhouette()}${dots}</div></div>`;};
+    const fig=view=>{const ms=m.markers.map((x,i)=>({...x,n:i+1})).filter(x=>x.view===view);const dots=ms.map(x=>`<div class="marker" style="left:${x.x}%;top:${x.y}%;cursor:default">${x.n}</div>`).join('');return `<div class="body-fig"><div class="cap">${view==='front'?'앞 · FRONT':'뒤 · BACK'}</div><div class="figbox" style="position:relative">${silhouette(view)}${dots}</div></div>`;};
     const labels=m.markers.map((x,i)=>x.label?`<div class="marker-item"><div class="dot">${i+1}</div><div class="mi-body"><div class="mi-where">${esc(x.label)}</div></div></div>`:'').join('');
     bm=`<div class="detail-bodymap"><h4 class="clayh" style="margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:.1em;">불편 부위</h4><div class="bodies">${fig('front')}${fig('back')}</div><div class="marker-list">${labels}</div></div>`;
   }
