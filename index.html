@@ -353,16 +353,8 @@ input.tx:focus,select.tx:focus,textarea.tx:focus{border-color:var(--sage);backgr
       </div>
     </div>
 
-    <div class="section">
-      <div class="sec-label"><span class="sec-num">05</span><h3>기타 특성</h3></div>
-      <div class="grid2">
-        <div class="field"><label>손잡이</label><div class="seg full" data-single="hand"><button data-v="오른손">오른손</button><button data-v="왼손">왼손</button><button data-v="양손">양손</button></div></div>
-        <div class="field"><label>성격</label><div class="seg full" data-single="temper"><button data-v="급하다">급하다</button><button data-v="보통">보통</button><button data-v="느긋">느긋</button></div></div>
-      </div>
-    </div>
-
     <div class="section" id="femaleSection" style="display:none;">
-      <div class="sec-label"><span class="sec-num">06</span><h3>여성 건강 정보</h3><span class="hint">선택 입력</span></div>
+      <div class="sec-label"><span class="sec-num">05</span><h3>여성 건강 정보</h3><span class="hint">선택 입력</span></div>
       <div class="field"><label>월경</label><div class="seg full" data-single="menses"><button data-v="유">유</button><button data-v="무">무</button><button data-v="생리불순">생리불순</button></div></div>
       <div class="field"><label>생리통</label><div class="seg full" data-single="cramp"><button data-v="없음">없음</button><button data-v="상">상</button><button data-v="중">중</button><button data-v="하">하</button></div></div>
       <div class="field"><label>임신</label><div class="seg" data-toggle="preg" data-target="pregcond"><button data-v="무">무</button><button data-v="유">유</button></div>
@@ -481,7 +473,7 @@ function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2
 function initials(n){return (n||'?').trim().slice(0,2)||'?'}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
-function silhouette(view){var F="#EFF3EC",L="#6F7C6B";var P="<path d=\"M150 22 C172 22 186 40 186 64 C186 86 178 104 164 114 C158 119 154 122 150 122 C146 122 142 119 136 114 C122 104 114 86 114 64 C114 40 128 22 150 22 Z\"/><path d=\"M138 108 L162 108 L166 138 L134 138 Z\"/><path d=\"M150 128 C182 128 200 148 200 182 C200 248 189 326 183 388 C181 404 177 416 169 420 L150 423 L131 420 C123 416 119 404 117 388 C111 326 100 248 100 182 C100 148 118 128 150 128 Z\"/><path d=\"M197 166 C215 170 223 189 223 214 C223 270 227 340 231 404 C233 430 233 448 227 456 C222 462 214 462 209 456 C203 448 201 430 201 404 C199 340 193 270 191 216 C189 192 187 172 197 166 Z\"/><path d=\"M103 166 C85 170 77 189 77 214 C77 270 73 340 69 404 C67 430 67 448 73 456 C78 462 86 462 91 456 C97 448 99 430 99 404 C101 340 107 270 109 216 C111 192 113 172 103 166 Z\"/><path d=\"M152 420 C168 420 182 423 186 431 C190 463 188 540 184 600 C182 632 180 656 176 668 C172 676 164 676 160 668 C156 656 156 632 155 600 C154 540 153 463 153 433 C153 427 152 422 152 420 Z\"/><path d=\"M148 420 C132 420 118 423 114 431 C110 463 112 540 116 600 C118 632 120 656 124 668 C128 676 136 676 140 668 C144 656 144 632 145 600 C146 540 147 463 147 433 C147 427 148 422 148 420 Z\"/><path d=\"M160 664 C157 676 161 688 175 688 C188 688 192 679 187 671 C182 665 169 662 160 664 Z\"/><path d=\"M140 664 C143 676 139 688 125 688 C112 688 108 679 113 671 C118 665 131 662 140 664 Z\"/>";return `<svg class="silhouette" viewBox="0 0 300 706" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="${L}" stroke="${L}" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round">${P}</g><g fill="${F}">${P}</g></svg>`;}
+function silhouette(view){var F="#EFF3EC",L="#6F7C6B";var P="<path d=\"M140 22 C159 22 171 39 171 60 C171 79 164 95 151 103 C146 107 143 109 140 109 C137 109 134 107 129 103 C116 95 109 79 109 60 C109 39 121 22 140 22 Z\"/><path d=\"M131 100 L149 100 L152 124 L128 124 Z\"/><path d=\"M140 124 C158 125 174 132 184 152 C193 172 185 222 177 262 C173 286 167 306 166 324 C165 340 169 351 176 356 C180 361 178 366 172 368 L140 370 L108 368 C102 366 100 361 104 356 C111 351 115 340 114 324 C113 306 107 286 103 262 C95 222 87 172 96 152 C106 132 122 125 140 124 Z\"/><path d=\"M184 158 C200 161 208 178 208 202 C209 236 212 280 214 316 C216 340 215 360 211 380 C209 394 211 404 205 408 C199 412 193 408 191 400 C189 376 188 342 188 308 C187 270 186 226 187 202 C188 180 178 162 184 158 Z\"/><path d=\"M96 158 C80 161 72 178 72 202 C71 236 68 280 66 316 C64 340 65 360 69 380 C71 394 69 404 75 408 C81 412 87 408 89 400 C91 376 92 342 92 308 C93 270 94 226 93 202 C92 180 102 162 96 158 Z\"/><path d=\"M143 370 C159 370 173 373 177 382 C181 414 179 478 175 530 C173 562 170 596 169 624 C168 638 167 648 163 648 C160 648 158 640 157 626 C156 596 154 562 153 530 C151 478 149 414 149 382 C149 376 148 372 148 370 Z\"/><path d=\"M137 370 C121 370 107 373 103 382 C99 414 101 478 105 530 C107 562 110 596 111 624 C112 638 113 648 117 648 C120 648 122 640 123 626 C124 596 126 562 127 530 C129 478 131 414 131 382 C131 376 132 372 132 370 Z\"/><path d=\"M157 642 C155 654 159 664 172 664 C184 664 188 656 183 648 C178 642 166 640 157 642 Z\"/><path d=\"M123 642 C125 654 121 664 108 664 C96 664 92 656 97 648 C102 642 114 640 123 642 Z\"/>";return `<svg class="silhouette" viewBox="0 0 280 680" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="${L}" stroke="${L}" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round">${P}</g><g fill="${F}">${P}</g></svg>`;}
 
 /* ============ nav ============ */
 function show(id){
@@ -717,7 +709,7 @@ function openDetail(id){
     </div>
     <div class="dgroup"><h4>기본</h4>${row('연락처',m.phone)}${row('주소',m.addr)}${row('직업',m.job)}${row('결혼여부',m.marital)}${row('방문 경로',m.route)}${row('운동 목적',m.goals)}${row('필라테스 경험',[m.pmode,m.pexp].filter(Boolean).join(' / '))}</div>
     <div class="dgroup"><h4>건강</h4>${row('질환',disease,true)}${row('정기 운동',cond(m.q1)?[m.q1_type,m.q1_freq,m.q1_dur].filter(Boolean).join(' · '):'없음')}${row('타 운동 경험',cond(m.q2)?[m.q2_type,m.q2_freq,m.q2_dur].filter(Boolean).join(' · '):'없음')}${row('수술/입원',cond(m.q5)?[m.q5_when,m.q5_why].filter(Boolean).join(' · '):'없음',cond(m.q5))}${row('흉터/상해',cond(m.q6)?[m.q6_when,m.q6_why].filter(Boolean).join(' · '):'없음',cond(m.q6))}${row('복용 약',cond(m.q7)?[m.q7_when,m.q7_why].filter(Boolean).join(' · '):'없음',cond(m.q7))}</div>
-    <div class="dgroup"><h4>특성</h4>${row('손잡이',m.hand)}${row('성격',m.temper)}</div>`;
+    `;
   if(m.gender==='여성'&&(m.menses||m.cramp||cond(m.preg)||cond(m.birth_y))){
     html+=`<div class="dgroup"><h4>여성 건강</h4>${row('월경',m.menses)}${row('생리통',m.cramp)}${row('임신',cond(m.preg)?[m.preg_month&&m.preg_month+'개월',m.preg_due].filter(Boolean).join(' · ')||'유':'무')}${row('출산',cond(m.birth_y)?[m.birth_count&&m.birth_count+'회',m.birthtype].filter(Boolean).join(' · ')||'유':'무')}</div>`;
   }
